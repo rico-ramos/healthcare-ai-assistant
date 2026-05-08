@@ -1,0 +1,27 @@
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+.venv/
+
+# Mac
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit cache
+.streamlit/
+
+# Logs
+*.log
+
+# Data (optional)
+data/*.csv
+data/*.json
+
+.faiss_index/

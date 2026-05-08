@@ -1,0 +1,7 @@
+Patient: Anjali Mehra
+Age: 33
+Visit Summary: Patient presents with 5-day history of dry cough and mild fever.
+Diagnosis: Upper Respiratory Infection (J06.9).
+Vitals: Mild fever reported. No severe respiratory distress documented.
+Medications / Treatment: Symptomatic management with antihistamines, increased fluids, and rest.
+Plan: Follow up in 5 days or sooner if symptoms worsen.

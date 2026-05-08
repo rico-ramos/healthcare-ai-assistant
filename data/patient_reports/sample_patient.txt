@@ -1,0 +1,6 @@
+Patient: Rebeca Nagle
+Age: 36
+Visit Summary: Patient has multiple visit summaries in the record.
+Diagnosis: Ongoing clinical follow-up needs documented in sample chart.
+Lab Results: No specific lab values available in this sample text.
+Treatment Plan: Review chart notes, maintain follow-up care, and update summary after clinical review.

@@ -1,0 +1,7 @@
+Patient: Ramesh Kulkarni
+Age: 65
+Visit Summary: Routine checkup with history of hypertension.
+Diagnosis: Hypertension.
+Vitals: Blood pressure monitoring recommended.
+Treatment Plan: Continue antihypertensive management, lifestyle modification, and cardiology follow-up if symptoms or elevated readings persist.
+Plan: Review medication adherence and monitor for red flags including chest pain, shortness of breath, severe headache, or neurological symptoms.

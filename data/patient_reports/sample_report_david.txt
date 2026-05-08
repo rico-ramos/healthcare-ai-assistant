@@ -1,0 +1,7 @@
+Patient: David Thompson
+Age: 51
+Visit Summary: Follow-up visit for Type 2 Diabetes Mellitus.
+Diagnosis: Type 2 Diabetes Mellitus.
+Lab Results: Blood glucose monitoring recommended. A1C follow-up advised.
+Treatment Plan: Continue lifestyle management, monitor glucose levels, and follow up with endocrinology.
+Plan: Endocrinology appointment recommended for ongoing diabetes management.
