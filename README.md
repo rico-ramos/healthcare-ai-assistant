@@ -34,12 +34,27 @@ The system is designed using an **agentic architecture**, where decisions are ma
 
 ---
 
+## 🤖 Why LangGraph?
+
+This project uses LangGraph to model the assistant as a stateful workflow rather than a simple chain.
+
+This enables:
+
+- Multi-step reasoning across complex tasks
+- Conditional routing based on intermediate results
+- Tool invocation with structured state tracking
+- Greater reliability compared to single-pass LLM calls
+
+This approach reflects how production-grade AI systems are increasingly built—moving beyond prompt chains into orchestrated agent workflows.
+
+---
+
 ## ⚙️ Tech Stack
 
 - **LLM / Agent Framework:** LangGraph, LangChain
 - **Model:** OpenAI (Chat-based LLM)
 - **Vector Store:** FAISS
-- **Frontend:** :contentReference[oaicite:0]{index=0}
+- **Frontend:** Streamlit UI
 - **Language:** Python
 
 ---
@@ -78,6 +93,38 @@ These metrics are displayed directly in the UI to support debugging and system o
 
 ---
 
+## 💬 Example Interaction
+
+**User Input:**
+"Pull patient info for Anjali and summarize her condition"
+
+**System Behavior:**
+
+- Detects patient name
+- Calls patient registry tool
+- Retrieves associated records
+- Generates structured summary
+
+**Output:**
+"The patient information for Anjali Mehra is as follows:
+
+- Name: Anjali Mehra
+- Age: 33
+- Gender: Female
+- Phone: +91-98180-11245
+- Address: 202 Lakeview Apartments, Pune
+
+Current Condition Summary: Anjali Mehra presents with a 5-day history of dry cough and mild fever. She has been diagnosed with an Upper Respiratory Infection (J06.9).
+
+Treatment Guidance:
+
+- Symptomatic management with antihistamines
+- Increase fluid intake
+- Ensure adequate rest
+- Follow-up appointment in 5 days"
+
+---
+
 ## 🧪 Testing
 
 Basic unit tests are included to validate core functionality.
@@ -87,6 +134,8 @@ Run tests:
 ```bash
 PYTHONPATH=src python -m pytest tests/
 ```
+
+---
 
 ## 🛠️ Installation & Setup
 
@@ -124,13 +173,17 @@ PYTHONPATH=src python -m pytest tests/
    OPENAI_API_KEY=your_api_key_here
    ```
 
+---
+
 ## ▶️ Running the App
 
     ```bash
     PYTHONPATH=src streamlit run app.py
     ```
 
-## Project structure
+---
+
+## 📂 Project structure
 
 ```text
 healthcare_ai_assistant_clean/
@@ -154,12 +207,14 @@ healthcare_ai_assistant_clean/
 │   └── cli.py
 │
 ├── tests/
-│   └── test_registry.py            # Unit test(s) for registry logic
+│   └── test_registry.py            # Unit test for registry logic
 │
 ├── .env.example
 ├── requirements.txt
 └── README.md
 ```
+
+---
 
 ## 🚧 Future Improvements
 
@@ -168,80 +223,17 @@ healthcare_ai_assistant_clean/
 - Improve UI with agent reasoning visualization
 - Integrate structured medical knowledge base
 
+---
+
 ## 💡 Why This Project Matters
 
-This project demonstrates practical implementation of:
+This project demonstrates the shift from simple LLM-powered applications to **agentic systems capable of reasoning, tool use, and state management**.
 
-- Agent-based system design
-- LLM + tool integration
-- Real-world workflow automation using AI
+Rather than relying on single prompts, the assistant:
 
-It reflects a shift from simple prompt-based systems to **composable, stateful AI architectures.**
+- Breaks problems into steps
+- Uses tools to gather information
+- Maintains context across interactions
+- Produces structured, reliable outputs
 
-## Setup
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-```
-
-Add your OpenAI key to `.env`:
-
-```bash
-OPENAI_API_KEY=your_key_here
-```
-
-## Run the UI
-
-```bash
-PYTHONPATH=src streamlit run app.py
-```
-
-## Run from the command line
-
-```bash
-PYTHONPATH=src python -m healthcare_ai_assistant.cli "What is Anjali Mehra's diagnosis and treatment plan?"
-```
-
-## Run a smoke test without OpenAI
-
-```bash
-PYTHONPATH=src python scripts/smoke_test.py
-```
-
-This verifies patient lookup and appointment-booking logic without calling the LLM or embeddings API.
-
-## Baseline preserved from notebook
-
-The conversion keeps the core notebook logic intact:
-
-- `lookup_patient`
-- `retrieve_medical_history`
-- `book_appointment`
-- `search_medical_info`
-- `update_patient_summary`
-- LangGraph agent/tool loop
-- Patient capture after tool execution
-- Final synthesis response
-- Patient session memory
-- Streamlit UI
-
-## Recommended next improvements
-
-These are intentionally not forced into the baseline conversion:
-
-1. Add an evaluation harness with 25-100 clinical workflow test prompts.
-2. Persist FAISS indexes to disk instead of rebuilding them on startup.
-3. Replace in-memory summary updates with a real database write layer.
-4. Add structured output schemas for appointment and patient summary tools.
-5. Add unit tests around graph routing and patient-name capture.
-6. Add retrieval quality metrics: `top_k_hit_rate` and cost per query.
-
-## Demo
-
-![Chat UI](chat.png)
-![Conversation](conversation.png)
-![Patient Snapshot](patient_snapshot.png)
-![Metrics](metrics.png)
+These patterns are foundational to modern AI engineering and production AI systems.
