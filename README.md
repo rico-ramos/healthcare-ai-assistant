@@ -1,20 +1,134 @@
-# Healthcare AI Assistant
+# 🏥 Agentic AI Healthcare Assistant
 
-An advanced AI-powered assistant for healthcare staff, featuring patient lookup, medical-history retrieval, appointment booking, and clinical guideline summarization—all built with a modular, production-ready architecture using LangGraph.
+An AI-powered healthcare assistant built using LangGraph that performs multi-step reasoning, retrieves patient data, and generates structured responses through tool-based workflows.
 
-## What this project does
+This project demonstrates how modern LLM-based systems can move beyond simple chat interactions into **stateful, tool-augmented agents** capable of handling real-world workflows.
 
-This assistant supports a staff-facing healthcare workflow:
+---
 
-- Patient lookup by name or phone
-- Medical-history retrieval from patient report files
-- LangGraph tool orchestration
-- Appointment booking with specialty matching
-- General treatment-guideline summarization
-- In-memory patient session recall
-- Streamlit UI for local interaction
+## 📌 Project Overview
 
-> Educational prototype only. It is not medical advice and should not replace clinician judgment.
+This assistant simulates a healthcare support system that can:
+
+- Retrieve patient records from a registry
+- Analyze symptoms and provide structured responses
+- Maintain conversational state across interactions
+- Dynamically invoke tools based on user intent
+
+The system is designed using an **agentic architecture**, where decisions are made step-by-step using a state machine powered by LangGraph.
+
+---
+
+## 🧠 Architecture & Flow
+
+**Core Flow:**
+
+1. User submits a query (symptoms, patient lookup, etc.)
+2. Agent processes input and determines next step
+3. Tools are invoked as needed:
+   - Patient lookup
+   - Document retrieval (RAG)
+   - Scheduling logic
+4. State is updated across steps
+5. Final response is generated and returned
+
+---
+
+## ⚙️ Tech Stack
+
+- **LLM / Agent Framework:** LangGraph, LangChain
+- **Model:** OpenAI (Chat-based LLM)
+- **Vector Store:** FAISS
+- **Frontend:** :contentReference[oaicite:0]{index=0}
+- **Language:** Python
+
+---
+
+## 🔑 Key Features
+
+- Stateful agent workflow using LangGraph
+- Tool-based reasoning and execution
+- Retrieval-Augmented Generation (RAG)
+- Patient memory across sessions
+- Interactive UI for real-time querying
+- Runtime performance tracking
+
+---
+
+## 📊 Performance & Observability
+
+The system includes built-in runtime metrics to evaluate performance and behavior:
+
+- ⏱️ Average latency per query
+- 🔧 Tool invocation tracking (per query + total session)
+- 🧮 Token usage monitoring
+- ✅ Response completion tracking
+- 🧠 Patient detection validation
+
+These metrics are displayed directly in the UI to support debugging and system optimization.
+
+---
+
+## 🖥️ Demo
+
+![Chat UI](chat.png)
+![Conversation](conversation.png)
+![Patient Snapshot](patient_snapshot.png)
+![Metrics](metrics.png)
+
+---
+
+## 🧪 Testing
+
+Basic unit tests are included to validate core functionality.
+
+Run tests:
+
+```bash
+PYTHONPATH=src python -m pytest tests/
+```
+
+## 🛠️ Installation & Setup
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/rico-ramos/healthcare-ai-assistant.git
+   cd healthcare-ai-assistant
+   ```
+
+2. Create virtual environment
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. Install dependencies
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set environment variables
+
+   Create a .env file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Add your OpenAI key to `.env`:
+
+   ```bash
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
+## ▶️ Running the App
+
+    ```bash
+    PYTHONPATH=src streamlit run app.py
+    ```
 
 ## Project structure
 
@@ -22,29 +136,52 @@ This assistant supports a staff-facing healthcare workflow:
 healthcare_ai_assistant_clean/
 ├── app.py                          # Streamlit UI
 ├── data/
-│   ├── records.csv                  # Patient registry data
-│   └── patient_reports/             # Patient report source files
+│   ├── records.csv
+│   └── patient_reports/
 ├── notebooks/
 │   └── Capstone_Healthcare_Assistant_RAMOS_original.ipynb
 ├── scripts/
-│   └── smoke_test.py                # OpenAI-free sanity check
+│   └── smoke_test.py               # OpenAI-free sanity check
 ├── src/healthcare_ai_assistant/
-│   ├── config.py                    # Settings / environment variables
-│   ├── registry.py                  # Patient lookup + summary update
-│   ├── documents.py                 # Document loading, chunking, FAISS retrieval
-│   ├── scheduling.py                # Appointment booking logic
-│   ├── tools.py                     # Tool implementation layer
-│   ├── graph.py                     # LangGraph state machine and tool wrappers
-│   ├── memory.py                    # Per-patient session memory
-│   ├── runner.py                    # Runtime factory and run() method
-│   └── cli.py                       # Optional CLI entry point
-└── requirements.txt
+│   ├── config.py
+│   ├── registry.py
+│   ├── documents.py
+│   ├── scheduling.py
+│   ├── tools.py
+│   ├── graph.py
+│   ├── memory.py
+│   ├── runner.py
+│   └── cli.py
+│
+├── tests/
+│   └── test_registry.py            # Unit test(s) for registry logic
+│
+├── .env.example
+├── requirements.txt
+└── README.md
 ```
+
+## 🚧 Future Improvements
+
+- Expand evaluation framework for response accuracy
+- Add multi-patient conversational context handling
+- Improve UI with agent reasoning visualization
+- Integrate structured medical knowledge base
+
+## 💡 Why This Project Matters
+
+This project demonstrates practical implementation of:
+
+- Agent-based system design
+- LLM + tool integration
+- Real-world workflow automation using AI
+
+It reflects a shift from simple prompt-based systems to **composable, stateful AI architectures.**
 
 ## Setup
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
@@ -100,4 +237,11 @@ These are intentionally not forced into the baseline conversion:
 3. Replace in-memory summary updates with a real database write layer.
 4. Add structured output schemas for appointment and patient summary tools.
 5. Add unit tests around graph routing and patient-name capture.
-6. Add retrieval quality metrics: `top_k_hit_rate`, average latency, and cost per query.
+6. Add retrieval quality metrics: `top_k_hit_rate` and cost per query.
+
+## Demo
+
+![Chat UI](chat.png)
+![Conversation](conversation.png)
+![Patient Snapshot](patient_snapshot.png)
+![Metrics](metrics.png)
