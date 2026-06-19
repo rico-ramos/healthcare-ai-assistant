@@ -25,3 +25,5 @@ data/*.csv
 data/*.json
 
 .faiss_index/
+requirements-full.txt
+README_old.md
