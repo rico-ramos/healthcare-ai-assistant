@@ -24,5 +24,3 @@ __pycache__/
 !data/records.csv
 
 .faiss_index/
-requirements-full.txt
-README_old.md
