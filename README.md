@@ -132,7 +132,7 @@ Basic unit tests are included to validate core functionality.
 Run tests:
 
 ```bash
-PYTHONPATH=src python -m pytest tests/
+PYTHONPATH=src python3 -m pytest tests/
 ```
 
 ---
@@ -177,9 +177,9 @@ PYTHONPATH=src python -m pytest tests/
 
 ## ▶️ Running the App
 
-    ```bash
-    PYTHONPATH=src streamlit run app.py
-    ```
+```bash
+PYTHONPATH=src streamlit run app.py
+```
 
 ---
 

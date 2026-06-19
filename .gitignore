@@ -23,6 +23,7 @@ __pycache__/
 # Data (optional)
 data/*.csv
 data/*.json
+!data/records.csv
 
 .faiss_index/
 requirements-full.txt
